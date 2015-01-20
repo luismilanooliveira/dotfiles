@@ -611,12 +611,20 @@ endif
 " }}}
 "
 " Personal Mappings
+
 nnoremap <leader>t :! tree\|less <cr>
 nnoremap <leader>w :w<cr>
 nnoremap <leader>W zz
 nnoremap <leader>q :q<cr>
+nnoremap <leader><leader> <c-^>
+
 " map escape key to ;; 
 inoremap ;; <ESC>
 inoremap jk <ESC>
 inoremap kj <ESC>
+
+" Lines length up to 80 characters
+highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+match OverLength /\%81v.\+/
+
 
