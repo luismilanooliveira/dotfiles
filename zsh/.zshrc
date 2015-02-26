@@ -114,20 +114,8 @@ alias emacs='emacs -nw'
 # vi mode bindings
 export EDITOR="vim"
 bindkey -v
-bindkey -M viins 'jj' vi-cmd-mode
-# # Use vim cli mode
-bindkey '^P' up-history
-bindkey '^N' down-history
+bindkey -M viins 'jk' vi-cmd-mode
 
-# backspace and ^h working even after
-# returning from command mode
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
+alias ohmyzsh="vim ~/.oh-my-zsh"
 
-# ctrl-w removed word backwards
-bindkey '^w' backward-kill-word
-
-# ctrl-r starts searching history backward
-bindkey '^r' history-incremental-search-backward
-
-alias ohmyzsh="mate ~/.oh-my-zsh"
+source $HOME/.zshrc.local
