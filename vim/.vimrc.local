@@ -14,4 +14,8 @@ inoremap kj <ESC>
 " Lines length up to 80 characters
 
 
-autocmd FileType haskell highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9 | match OverLength /\%81v.\+/
+" autocmd FileType haskell highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9 | match OverLength /\%81v.\+/
+
+highlight LineNr ctermfg=yellow
+
+nnoremap <leader>P :Pandoc -s<cr>
