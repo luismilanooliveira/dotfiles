@@ -107,10 +107,6 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Alias for opening emacs inside the terminal emulator, when invocked by it.
-alias emacs='emacs -nw'
-
-
 # vi mode bindings
 export EDITOR="vim"
 bindkey -v
@@ -119,3 +115,6 @@ bindkey -M viins 'jk' vi-cmd-mode
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
 source $HOME/.zshrc.local
+
+# added by travis gem
+[ -f /Users/luis/.travis/travis.sh ] && source /Users/luis/.travis/travis.sh
