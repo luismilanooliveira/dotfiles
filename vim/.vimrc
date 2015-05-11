@@ -41,6 +41,8 @@ Plugin 'Twinside/vim-hoogle'
 " Elm Plugin
 Plugin 'lambdatoast/elm.vim'
 
+" SML
+Plugin 'chilicuil/vim-sml-coursera'
 
 if filereadable(expand("~/.vim.local/bundles.vim"))
   source ~/.vim.local/bundles.vim

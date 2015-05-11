@@ -52,12 +52,6 @@ plugins=(git cabal brew fasd osx)
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
-export GHC_DOT_APP="/Applications/ghc-7.8.3.app"
-if [ -d "$GHC_DOT_APP" ]; then
-    export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
-fi
-
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
