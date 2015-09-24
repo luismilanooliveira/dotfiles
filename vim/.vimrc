@@ -54,8 +54,8 @@ call vundle#end()
 set wildmenu
 set wildmode=list:longest,full
 
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 noremap ,, ,
 set tm=2000
 
@@ -66,7 +66,7 @@ nnoremap k gk
 " Always show current position
 set ruler
 set number
-set undofile
+" set undofile
 set relativenumber
 
 au FocusLost * :wa
@@ -196,8 +196,7 @@ nnoremap <leader>q :q<cr>
 nnoremap <leader><leader> <c-^>
 
 " map escape key to ;; 
-inoremap jk <ESC>
-inoremap kj <ESC>
+inoremap fd <ESC>
 nnoremap ; :
 
 " Color {
@@ -250,7 +249,7 @@ set gfn=Inconsolata:h16
 
 nmap <silent> <leader>u :GundoToggle<CR>
 " ControlP
-nnoremap <silent> <leader><space> :CtrlP<CR>
+nnoremap <silent> <leader>o :CtrlP<CR>
 let g:ctrlp_max_files=0
 let g:ctrlp_show_hidden=1
 let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git)$' }
@@ -272,7 +271,13 @@ map <Leader>a<bar> :Align <bar><CR>
 " Prompt for align character
 map <leader>ap :Align
 
-" Enable some tabular presets for 
+" Copy/paste to/from the system clipboard
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
 
 source ~/.vimrc.haskell
 
