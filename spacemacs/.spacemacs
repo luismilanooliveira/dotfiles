@@ -19,11 +19,16 @@
      ;; ----------------------------------------------------------------
      auto-completion
      ;; better-defaults
+     clojure
      emacs-lisp
      evil-commentary
      extra-langs
      git
-     haskell
+     (haskell
+         :variables haskell-enable-hindent-style "chris-done"
+         haskell-enable-ghc-mod-support t
+         haskell-enable-shm-support)
+     java
      latex
      markdown
      org
@@ -35,6 +40,7 @@
             shell-default-height 40
             shell-default-position 'bottom)
      syntax-checking
+     scheme
      version-control
      )
    ;; List of additional packages that will be installed without being
@@ -146,39 +152,42 @@ before layers configuration."
    ;; scrolling overrides the default behavior of Emacs which recenters the
    ;; point when it reaches the top or bottom of the screen.
    dotspacemacs-smooth-scrolling t
-   ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
-   dotspacemacs-smartparens-strict-mode nil
-   ;; Select a scope to highlight delimiters. Possible value is `all',
-   ;; `current' or `nil'. Default is `all'
-   dotspacemacs-highlight-delimiters 'all
-   ;; If non nil advises quit functions to keep server open when quitting.
-   dotspacemacs-persistent-server nil
-   ;; List of search tool executable names. Spacemacs uses the first installed
-   ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
-   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
-   ;; The default package repository used if no explicit repository has been
-   ;; specified with an installed package.
+
    ;; Not used for now.
    dotspacemacs-default-package-repository nil
-   )
+  ) 
   ;; User initialization goes here
-  )
+
+ ;; (when (memq window-system '(mac ns))
+ ;;   (exec-path-from-shell-initialize))
+  (add-to-list 'exec-path "~/.cabal/bin")
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+  (add-to-list 'exec-path "~/.local/bin")
+  (setq eclim-eclipse-dirs '("/Applications/Eclipse.app/Content/Eclipse")
+        eclim-executable   '("/Applications/Eclipse.app/Content/Eclipse/eclim"))
+  ;; org global bindings
+  (evil-leader/set-key
+    "aoa" 'org-agenda
+    "aog" 'helm-org-agenda-files-headings
+    "aoo" 'org-clock-out
+    "aoc" 'org-capture
+    "aoC" 'helm-org-capture-templates ;requires templates to be defined.
+    "aol" 'org-store-link)
+)
 
 (defun dotspacemacs/config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
-  ispell-dictionary "brasileiro" 
+;;  (ispell-dictionary "brasileiro")
 
-  (when (memq window-system '(mac ns))
-    (exec-path-from-shell-initialize))
-  
-  ;; active Babel languages
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((gnuplot . t)))
+;; active Babel languages
+;; (org-babel-do-load-languages
+;;  'org-babel-load-languages
+;;  '((gnuplot . t)))
   
 )
+
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
