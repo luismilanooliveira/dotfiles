@@ -24,6 +24,9 @@ Plugin 'bling/vim-airline'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'vim-scripts/Conque-Shell'
 
+" aesthetics
+Plugin 'altercation/vim-colors-solarized'
+
 " Text manipulation
 Plugin 'vim-scripts/Align'
 Plugin 'vim-scripts/Gundo'
@@ -39,10 +42,10 @@ Plugin 'eagletmt/neco-ghc'
 Plugin 'Twinside/vim-hoogle'
 
 " Elm Plugin
-Plugin 'lambdatoast/elm.vim'
+" Plugin 'lambdatoast/elm.vim'
 
 " SML
-Plugin 'chilicuil/vim-sml-coursera'
+" Plugin 'chilicuil/vim-sml-coursera'
 
 if filereadable(expand("~/.vim.local/bundles.vim"))
   source ~/.vim.local/bundles.vim
@@ -279,5 +282,5 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
-source ~/.vimrc.haskell
+" source ~/.vimrc.haskell
 
