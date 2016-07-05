@@ -24,14 +24,15 @@ Plugin 'bling/vim-airline'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'vim-scripts/Conque-Shell'
 
+" aesthetics
+Plugin 'altercation/vim-colors-solarized'
+
 " Text manipulation
 Plugin 'vim-scripts/Align'
 Plugin 'vim-scripts/Gundo'
 Plugin 'tpope/vim-commentary'
 Plugin 'godlygeek/tabular'
 Plugin 'michaeljsmith/vim-indent-object'
-" Visual
-Plugin 'altercation/vim-colors-solarized'
 
 " Haskell
 Plugin 'raichoo/haskell-vim'
@@ -281,7 +282,7 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
-source ~/dotfiles/vim/.vimrc.haskell
+" source ~/.vimrc.haskell
 
 imap <silent> fd <Esc>
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
