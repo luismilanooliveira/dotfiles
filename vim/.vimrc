@@ -14,7 +14,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
@@ -30,6 +30,8 @@ Plugin 'vim-scripts/Gundo'
 Plugin 'tpope/vim-commentary'
 Plugin 'godlygeek/tabular'
 Plugin 'michaeljsmith/vim-indent-object'
+" Visual
+Plugin 'altercation/vim-colors-solarized'
 
 " Haskell
 Plugin 'raichoo/haskell-vim'
@@ -39,10 +41,10 @@ Plugin 'eagletmt/neco-ghc'
 Plugin 'Twinside/vim-hoogle'
 
 " Elm Plugin
-Plugin 'lambdatoast/elm.vim'
+" Plugin 'lambdatoast/elm.vim'
 
 " SML
-Plugin 'chilicuil/vim-sml-coursera'
+" Plugin 'chilicuil/vim-sml-coursera'
 
 if filereadable(expand("~/.vim.local/bundles.vim"))
   source ~/.vim.local/bundles.vim
@@ -279,5 +281,7 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
-source ~/.vimrc.haskell
+source ~/dotfiles/vim/.vimrc.haskell
 
+imap <silent> fd <Esc>
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
