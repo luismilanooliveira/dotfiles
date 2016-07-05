@@ -14,7 +14,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
@@ -284,3 +284,5 @@ vmap <Leader>P "+P
 
 " source ~/.vimrc.haskell
 
+imap <silent> fd <Esc>
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
