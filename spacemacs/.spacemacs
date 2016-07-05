@@ -51,6 +51,7 @@ values."
      scala
      sml
      spell-checking
+     spotify
      syntax-checking
      version-control
      )
@@ -145,7 +146,7 @@ values."
    dotspacemacs-default-layout-name "Default"
    ;; If non nil the default layout name is displayed in the mode-line.
    ;; (default nil)
-   dotspacemacs-display-default-layout nil
+   dotspacemacs-display-default-layout t
    ;; If non nil then the last auto saved layouts are resume automatically upon
    ;; start. (default nil)
    dotspacemacs-auto-resume-layouts nil
@@ -159,7 +160,7 @@ values."
    ;; If non nil then `ido' replaces `helm' for some commands. For now only
    ;; `find-files' (SPC f f), `find-spacemacs-file' (SPC f e s), and
    ;; `find-contrib-file' (SPC f e c) are replaced. (default nil)
-   dotspacemacs-use-ido nil
+   dotspacemacs-use-ido t
    ;; If non nil, `helm' will try to minimize the space it uses. (default nil)
    dotspacemacs-helm-resize nil
    ;; if non nil, the helm header is hidden when there is only one source.
@@ -254,6 +255,7 @@ layers configuration. You are free to put any user code."
         mu4e-drafts-folder "/drafts"
         mu4e-sent-folder   "/sent"
         mu4e-trash-folder  "/trash"
+        mu4e-refile-folder  "/archive"
         mu4e-view-show-images t
         mu4e-html2text-command "w3m -dump -T text/html"
         mu4e-view-prefer-html t
@@ -275,10 +277,11 @@ layers configuration. You are free to put any user code."
     "Mestrando em Ciência da Computação\n"
     "Universidade Estadual de Londrina"))
   (setq mu4e-maildir-shortcuts
-        '( ("/inbox"  . ?i)
-           ("/sent"   . ?s)
-           ("/trash"  . ?t)
-           ("/drafts" . ?d)))
+        '( ("/inbox"   . ?i)
+           ("/sent"    . ?s)
+           ("/archive" . ?a)
+           ("/trash"   . ?t)
+           ("/drafts"  . ?d)))
   ;; smtpmail
   (require 'starttls)
   (setq message-send-mail-function 'smtpmail-send-it
@@ -294,6 +297,7 @@ layers configuration. You are free to put any user code."
   ;; mu4e-alert
   (require 'mu4e-alert)
   (mu4e-alert-set-default-style 'notifier)
+  (mu4e-alert-enable-notifications)
   (add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
   (add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display)
   )
