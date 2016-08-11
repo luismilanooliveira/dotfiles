@@ -25,6 +25,7 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
+     c-c++
      ;; clojure
      dash
      emacs-lisp
@@ -34,20 +35,26 @@ values."
      git
      (haskell :variables
               haskell-completion-backend 'intero
+              haskell-enable-hindent-style "chris-done"
+              ;; haskell-process-type 'stack-ghci
       )
      ipython-notebook
      html
+     javascript
      latex
      markdown
      (mu4e :variables
-           mu4e-installation-path "/usr/local/Cellar/mu/HEAD/share/emacs/site-lisp/mu/mu4e"
+           mu4e-installation-path "/usr/share/emacs/site-lisp/mu4e"
            )
      org
-     osx
+     ;; osx
      pandoc
+     rust
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
+     (rcirc :variabels
+            rcirc-enable-authinfo-support t)
      scala
      sml
      spell-checking
@@ -60,10 +67,12 @@ values."
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages
-   '(mu4e-alert)
+   '(mu4e-alert
+     shm)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages
    '(
+   evil-unimpaired
      )
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
@@ -250,15 +259,21 @@ layers configuration. You are free to put any user code."
   ;; (setq mu4e-get-mail-command "mbsync gmail-inbox")
   ;; (setq mu4e-update-interval 1800)
   ;; mu4e
-  (setq mu4e-mu-binary "/usr/local/bin/mu"
+  (defun my-render-html-message ()
+    (let ((dom (libxml-parse-html-region (point-min) (point-max))))
+      (erase-buffer)
+      (shr-insert-document dom)
+      (goto-char (point-min))))
+  (setq mu4e-mu-binary "/usr/bin/mu"
         mu4e-maildir "~/.mail/gmail"
         mu4e-drafts-folder "/drafts"
         mu4e-sent-folder   "/sent"
         mu4e-trash-folder  "/trash"
         mu4e-refile-folder  "/archive"
         mu4e-view-show-images t
-        mu4e-html2text-command "w3m -dump -T text/html"
+        mu4e-html2text-command 'my-render-html-message
         mu4e-view-prefer-html t
+        mu4e-msg2pdf "/usr/bin/msg2pdf"
         mu4e-use-fancy-chars t
         mu4e-headers-skip-duplicates t
         mu4e-get-mail-command "mbsync gmail"
@@ -266,6 +281,7 @@ layers configuration. You are free to put any user code."
         mu4e-attachment-dir  "~/Downloads"
         mu4e-sent-messages-behavior 'delete
         message-kill-buffer-on-exit t
+        mu4e-change-filenames-when-moving t
         mu4e-hide-index-messages t)
   (add-hook 'mu4e-compose-mode-hook 'flyspell-mode)
   (setq
@@ -290,16 +306,47 @@ layers configuration. You are free to put any user code."
         smtpmail-default-smtp-server "smtp.gmail.com"
         smtpmail-smtp-server "smtp.gmail.com"
         smtpmail-smtp-user "luismilanooliveira@gmail.com")
-  (setq starttls-extra-arguments '("--x509cafile" "/usr/local/Cellar/nmap/7.12/share/ncat/ca-bundle.crt"))
+  ;; (setq starttls-extra-arguments '("--x509cafile" "/usr/local/Cellar/nmap/7.12/share/ncat/ca-bundle.crt"))
   ;; gpg
   (add-hook 'mu4e-compose-mode-hook 'epa-mail-mode)
   (add-hook 'mu4e-view-mode-hook 'epa-mail-mode)
   ;; mu4e-alert
   (require 'mu4e-alert)
-  (mu4e-alert-set-default-style 'notifier)
+  (mu4e-alert-set-default-style 'notifications)
   (mu4e-alert-enable-notifications)
   (add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
   (add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display)
+  (setq erc-server "chat.freenode.net"
+        erc-port "6697"
+        erc-nick "luismo"
+        erc-autojoin-channels '("#haskell" "#haskell-lang" "#haskell-beginners" "haskell-br"))
+
+  (setq haskell-compile-cabal-build-command "cd %s && stack build")
+  (spacemacs|define-custom-layout "org"
+    :binding "o"
+    :body
+    (split-window-below)
+    (find-file "~/org/work.org")
+    (split-window-right)
+    (evil-window-right 1)
+    (find-file "~/org/todo.org")
+    (evil-window-down 1)
+    (find-file "~/org/notes.org")
+    )
+  (spacemacs|define-custom-layout "erc"
+    :binding "E"
+    :body
+    (erc-tls)
+    )
+  (spacemacs|define-custom-layout "mail"
+    :binding "M"
+    :body
+    (mu4e)
+    )
+  (setq google-translate-default-target-language "pt")
+  (setq ensime-startup-snapshot-notification' nil)
+  (setq camel-case-motion t)
+  (add-hook 'text-mode-hook 'auto-fill-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
