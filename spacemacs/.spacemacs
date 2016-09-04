@@ -25,7 +25,7 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
-     c-c++
+     (c-c++ :variables c-c++-enable-clang-support t)
      ;; clojure
      dash
      emacs-lisp
@@ -36,10 +36,11 @@ values."
      (haskell :variables
               haskell-completion-backend 'intero
               haskell-enable-hindent-style "chris-done"
-              ;; haskell-process-type 'stack-ghci
+              haskell-process-type 'stack-ghci
       )
-     ipython-notebook
      html
+     ipython-notebook
+     ;; java
      javascript
      latex
      markdown
@@ -50,11 +51,10 @@ values."
      ;; osx
      pandoc
      rust
+     semantic
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
-     (rcirc :variabels
-            rcirc-enable-authinfo-support t)
      scala
      sml
      spell-checking
@@ -128,8 +128,13 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Inconsolata Regular"
                                :size 13
+                               :weight normal
+                               :width normal
+                               :powerline-scale 1.1
+                               "Source Code Pro"
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -347,7 +352,21 @@ layers configuration. You are free to put any user code."
   (setq ensime-startup-snapshot-notification' nil)
   (setq camel-case-motion t)
   (add-hook 'text-mode-hook 'auto-fill-mode)
+  (setq eclim-eclipse-dirs "~/.eclipse/org.eclipse.platform_4.6.0_155965261_linux_gtk_x86_64"
+        eclim-executable "~/.eclipse/org.eclipse.platform_4.6.0_155965261_linux_gtk_x86_64/eclim")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(auth-source-save-behavior nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
