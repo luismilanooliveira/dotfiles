@@ -35,11 +35,11 @@ Plugin 'godlygeek/tabular'
 Plugin 'michaeljsmith/vim-indent-object'
 
 " Haskell
-Plugin 'raichoo/haskell-vim'
-Plugin 'enomsg/vim-haskellConcealPlus'
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'eagletmt/neco-ghc'
-Plugin 'Twinside/vim-hoogle'
+" Plugin 'raichoo/haskell-vim'
+" Plugin 'enomsg/vim-haskellConcealPlus'
+" Plugin 'eagletmt/ghcmod-vim'
+" Plugin 'eagletmt/neco-ghc'
+" Plugin 'Twinside/vim-hoogle'
 
 " Elm Plugin
 " Plugin 'lambdatoast/elm.vim'

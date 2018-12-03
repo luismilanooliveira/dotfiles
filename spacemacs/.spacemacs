@@ -28,20 +28,19 @@ values."
      (c-c++ :variables c-c++-enable-clang-support t)
      ;; clojure
      dash
-     emacs-lisp
-     erc
-     ess
-     evil-snipe
+     ;; emacs-lisp
+     ;; erc
+     ;; ess
+     ;; evil-snipe
      git
-     (haskell :variables
-              haskell-completion-backend 'intero
-              haskell-enable-hindent-style "chris-done"
-              haskell-process-type 'stack-ghci
-      )
-     html
-     ipython-notebook
+     ;; (haskell :variables
+     ;;          haskell-completion-backend 'intero
+     ;;          haskell-enable-hindent-style "chris-done"
+     ;;          haskell-process-type 'stack-ghci)
+     ;; html
+     ;; ipython-notebook
      ;; java
-     javascript
+     ;; javascript
      latex
      markdown
      (mu4e :variables
@@ -55,8 +54,8 @@ values."
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
-     scala
-     sml
+     ;; scala
+     ;; sml
      spell-checking
      spotify
      syntax-checking
