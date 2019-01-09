@@ -1,6 +1,7 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.SetWMName
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Config.Gnome
@@ -19,15 +20,18 @@ main = do
                         { ppOutput = hPutStrLn xmproc
                         , ppTitle = xmobarColor "green" "" . shorten 50
                         }
+        , startupHook = setWMName "LG3D"
+        , handleEventHook    = handleEventHook defaultConfig <+> docksEventHook
         , modMask = mod4Mask     -- Rebind Mod to the Windows key
         , normalBorderColor  = "black"     --border color
         , focusedBorderColor = "gray"    --focused border color
         , borderWidth = 1
-        , terminal = "roxterm"
+        , terminal = "termite"
         } `additionalKeys`
-        [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock && xset dpms force off")
+        -- [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock && xset dpms force off")
+        [ ((mod4Mask .|. shiftMask, xK_z), spawn "slock")
         , ((mod4Mask .|. shiftMask, xK_p), spawn "sleep 0.2; scrot -s -e 'mv $f ~/Pictures/shots/'")
-        , ((mod4Mask .|. shiftMask, xK_o), spawn "sleep 0.2; scrot")
+        , ((mod4Mask .|. shiftMask, xK_o), spawn "sleep 0.2; scrot -e 'mv $f ~/Pictures/shots/'")
         , ((mod4Mask,               xK_j),  nextWS)
         , ((mod4Mask,               xK_k),    prevWS)
         , ((mod4Mask .|. shiftMask, xK_j),  shiftToNext)

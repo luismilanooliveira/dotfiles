@@ -17,17 +17,16 @@ stalonetray &
 
 xscreensaver -no-splash &
 
-dropbox &
+# dropbox &
 
 # Start udiskie to handle media
 udiskie &
 
-xfce4-power-manager
-feh --bg-scale /home/luis/Pictures/Wallpapers/tower-bridge-1889.jpg &
+# xfce4-power-manager
+feh --bg-scale /usr/share/backgrounds/clock_by_Bernhard_Hanakam.jpg &
 
 if [ -x /usr/bin/nm-applet ] ; then
    nm-applet --sm-disable &
 fi
 
 exec xmonad
-
