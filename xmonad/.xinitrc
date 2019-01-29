@@ -4,6 +4,7 @@
 # xmodmap -e "remove Lock = Caps_Lock"
 # xmodmap -e "keysym Caps_Lock = Control_L"
 # xmodmap -e "add Control = Control_L"
+setxkbmap br
 setxkbmap -option ctrl:nocaps
 
 # Load resources
@@ -15,7 +16,7 @@ stalonetray &
 
 # Fire up apps
 
-xscreensaver -no-splash &
+# xscreensaver -no-splash &
 
 # dropbox &
 
@@ -23,7 +24,7 @@ xscreensaver -no-splash &
 udiskie &
 
 # xfce4-power-manager
-feh --bg-scale /usr/share/backgrounds/clock_by_Bernhard_Hanakam.jpg &
+feh --bg-scale /usr/share/background/xfce/xfce-blue.jpg &
 
 if [ -x /usr/bin/nm-applet ] ; then
    nm-applet --sm-disable &

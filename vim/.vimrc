@@ -23,9 +23,10 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'bling/vim-airline'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'vim-scripts/Conque-Shell'
+Plugin 'Valloric/YouCompleteMe'
 
 " aesthetics
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
 
 " Text manipulation
 Plugin 'vim-scripts/Align'
@@ -33,19 +34,6 @@ Plugin 'vim-scripts/Gundo'
 Plugin 'tpope/vim-commentary'
 Plugin 'godlygeek/tabular'
 Plugin 'michaeljsmith/vim-indent-object'
-
-" Haskell
-" Plugin 'raichoo/haskell-vim'
-" Plugin 'enomsg/vim-haskellConcealPlus'
-" Plugin 'eagletmt/ghcmod-vim'
-" Plugin 'eagletmt/neco-ghc'
-" Plugin 'Twinside/vim-hoogle'
-
-" Elm Plugin
-" Plugin 'lambdatoast/elm.vim'
-
-" SML
-" Plugin 'chilicuil/vim-sml-coursera'
 
 if filereadable(expand("~/.vim.local/bundles.vim"))
   source ~/.vim.local/bundles.vim
@@ -212,7 +200,7 @@ if &term =~ '256color'
 endif
 
 set background=dark
-colorscheme solarized
+" colorscheme solarized
 
 " Adjust signscolumn and syntastic to match wombat
 hi! link SignColumn LineNr
@@ -286,3 +274,5 @@ vmap <Leader>P "+P
 
 imap <silent> fd <Esc>
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_global_ycm_extra_conf = "/home/luis/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py"
